@@ -15,10 +15,6 @@ public class ObstacleManager : MonoBehaviour
 
     private void Awake() {
         gridManager = FindObjectOfType<GridManager>();
-    }
-
-
-    private void Update() {
         InstantiateObstacles();
     }
     private void InstantiateObstacles()
