@@ -8,15 +8,20 @@ public class GameManager : MonoBehaviour
     
     public TextMeshProUGUI text;
     
-    
     void Update()
     {
+        DisplayPosition();
+    }
+
+    private void DisplayPosition()
+    {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        if(Physics.Raycast(ray, out RaycastHit hit))
+        if (Physics.Raycast(ray, out RaycastHit hit))
         {
             Labler labler = hit.collider.GetComponent<Labler>();
+            
 
-            if(!labler) { return; }
+            if (!labler) { return; }
             text.text = $"Tile Position: ({labler.coords.x}, {labler.coords.y})";
         }
     }

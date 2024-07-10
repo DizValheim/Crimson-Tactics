@@ -10,7 +10,7 @@ public class GridManager : MonoBehaviour
     public int UnityGridSize { get { return unityGridSize; } }
 
     Dictionary<Vector2Int, Node> grid = new Dictionary<Vector2Int, Node>();
-    Dictionary<Vector2Int, Node> Grid { get {return grid; } }
+    public Dictionary<Vector2Int, Node> Grid { get {return grid; } }
 
     private void Awake() {
         for (int x = 0; x < gridSize.x; x++)
