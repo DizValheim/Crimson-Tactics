@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out RaycastHit hit))
         {
-            Labler labler = hit.collider.GetComponent<Labler>();
+            Tile labler = hit.collider.GetComponent<Tile>();
             
 
             if (!labler) { return; }

@@ -26,6 +26,7 @@ public class ObstacleManager : MonoBehaviour
                 {
                     Vector3 worldPos = CalculateWorldPosition(row, col);
                     Instantiate(obstaclePrefab, worldPos, Quaternion.identity);
+                    gridManager.BlockNode(new Vector2Int(row, col));
                 }
 
             }

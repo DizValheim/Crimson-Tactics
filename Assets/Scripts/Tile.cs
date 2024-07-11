@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [ExecuteAlways]
-public class Labler : MonoBehaviour
+public class Tile : MonoBehaviour
 {
     public Vector2Int coords;
     GridManager gridManager;
@@ -12,7 +12,6 @@ public class Labler : MonoBehaviour
         gridManager = FindObjectOfType<GridManager>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         CalculateCoords();
