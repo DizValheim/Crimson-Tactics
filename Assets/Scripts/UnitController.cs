@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>Handles Player controls</summary>
 public class UnitController : MonoBehaviour
 {
     public float movementSpeed = 1f;

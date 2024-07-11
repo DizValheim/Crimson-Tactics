@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>Holds data about each individual node in the grid.</summary>
 public class Node
 {
     public Vector2Int coords;

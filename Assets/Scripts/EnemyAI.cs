@@ -2,19 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>Handles Enemy Movement</summary>
 public class EnemyAI : MonoBehaviour, IAI
 {
 
-    public float movementSpeed = 1f;
+    [Tooltip("How fast the Enemy moves.")]
+    public float movementSpeed = 1f;    
 
-    [SerializeField] Vector2Int targetCoords;
+    Vector2Int targetCoords;
     bool isMoving;
 
     GridManager gridManager;
     Pathfinding pathfinder;
 
     List<Node> path;
-    int currentPathIndex;
     Transform unitTransform;
 
     void Start()
@@ -24,15 +25,18 @@ public class EnemyAI : MonoBehaviour, IAI
         unitTransform = transform;
     }
 
+    /// <summary>Updates target according to player unit's position and calls for Movement method.</summary>
     public void UpdateTarget(Vector2Int newTargetCoords)
     {
+        gridManager.Grid[gridManager.GetCoordinatesFromPosition(unitTransform.position)].walkable = true;
         targetCoords = newTargetCoords;
         isMoving = true;
-        currentPathIndex = 0;
         path = null;
         MoveTowardsTarget();
+        
     }
 
+    /// <summary>Handles movement of the Enemy towards Player Unit</summary>
     public void MoveTowardsTarget()
     {
 
@@ -57,7 +61,6 @@ public class EnemyAI : MonoBehaviour, IAI
             Vector3 endPosition = gridManager.GetPositionFromCoordinates(path[i].coords);
             if (startPosition == endPosition)
                 continue;
-            // Debug.Log(path[i].coords);
             float travelPercent = 0f;
 
             unitTransform.LookAt(endPosition);
@@ -71,6 +74,7 @@ public class EnemyAI : MonoBehaviour, IAI
 
             
         }
+        gridManager.Grid[gridManager.GetCoordinatesFromPosition(unitTransform.position)].walkable = false;
 
     }
 

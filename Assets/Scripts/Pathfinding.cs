@@ -2,12 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>Handles pathfinding using Breadth First Search.</summary>
 public class Pathfinding : MonoBehaviour
 {
-    [SerializeField] Vector2Int startCoords;
+    Vector2Int startCoords;
     public Vector2Int StartCoords { get {return startCoords; } }
 
-    [SerializeField] Vector2Int targetCoords;
+    Vector2Int targetCoords;
     public Vector2Int TargetCoords { get {return targetCoords; } }
 
     Node startNode;

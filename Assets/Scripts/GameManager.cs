@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
         DisplayPosition();
     }
 
+    /// <summary>Displays the tile the cursor is pointing at</summary>
     private void DisplayPosition()
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);

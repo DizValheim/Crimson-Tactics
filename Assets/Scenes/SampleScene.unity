@@ -1047,52 +1047,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4867653749199785161, guid: a1ef4a9fbd7cd5144a6a1a7a68c6438d, type: 3}
   m_PrefabInstance: {fileID: 262944241}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &265023447
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 265023449}
-  - component: {fileID: 265023448}
-  m_Layer: 0
-  m_Name: GridManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &265023448
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 265023447}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 32444fca187034a4a8c81f3e7ebf9103, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gridSize: {x: 10, y: 10}
-  unityGridSize: 1
---- !u!4 &265023449
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 265023447}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &269205448
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3419,8 +3373,8 @@ Camera:
   m_GameObject: {fileID: 963194225}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0.19530971, g: 0.19639996, b: 0.1981132, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -5146,6 +5100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 1
+  targetCoords: {x: 0, y: 0}
 --- !u!136 &1453847221
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -6558,8 +6513,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Tile Position: (0,0)'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 634dd0215d25621458ede09fbfd88201, type: 2}
+  m_sharedMaterial: {fileID: 2560920676986982246, guid: 634dd0215d25621458ede09fbfd88201, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -6619,7 +6574,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: -13.595947, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -7172,6 +7127,7 @@ GameObject:
   - component: {fileID: 1997388386}
   - component: {fileID: 1997388385}
   - component: {fileID: 1997388387}
+  - component: {fileID: 1997388388}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -7191,8 +7147,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fd17fbde79945e4ab0b97eee50598c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerUnit: {fileID: 1446016922}
-  enemyUnit: {fileID: 1453847222}
   text: {fileID: 1861554958}
 --- !u!4 &1997388386
 Transform:
@@ -7223,6 +7177,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   obstaclePrefab: {fileID: 4862572753849315823, guid: a32855ea449ffa64ca03e05e384729fb, type: 3}
   obstacleData: {fileID: 11400000, guid: a889bdeb64967404688113d8c4795779, type: 2}
+--- !u!114 &1997388388
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1997388384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32444fca187034a4a8c81f3e7ebf9103, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gridSize: {x: 10, y: 10}
+  unityGridSize: 1
 --- !u!1001 &2011968142
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7819,7 +7787,6 @@ SceneRoots:
   - {fileID: 963194228}
   - {fileID: 705507995}
   - {fileID: 1302786875}
-  - {fileID: 265023449}
   - {fileID: 1997388386}
   - {fileID: 1565488563}
   - {fileID: 1529085659}

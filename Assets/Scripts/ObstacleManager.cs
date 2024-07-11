@@ -6,7 +6,10 @@ using UnityEngine;
 public class ObstacleManager : MonoBehaviour
 {
 
+    [Tooltip("Prefab of the obstacle.")]
     [SerializeField] GameObject obstaclePrefab;
+
+    [Tooltip("Obstacle configuration")]
     public ObstacleData obstacleData;
 
     GridManager gridManager;
@@ -15,6 +18,8 @@ public class ObstacleManager : MonoBehaviour
         gridManager = FindObjectOfType<GridManager>();
         InstantiateObstacles();
     }
+
+    /// <summary>Spawns Obstacles according to ObstacleData </summary>
     private void InstantiateObstacles()
     {
         for (int row = 0; row < 10; row++)
@@ -24,7 +29,8 @@ public class ObstacleManager : MonoBehaviour
 
                 if (obstacleData.blockedTiles.columns[col].row[row])
                 {
-                    Vector3 worldPos = CalculateWorldPosition(row, col);
+                    Vector3 worldPos = gridManager.GetPositionFromCoordinates(new Vector2Int(row,col));
+                    worldPos.y = 0.5f;  // to spawn above the tile
                     Instantiate(obstaclePrefab, worldPos, Quaternion.identity);
                     gridManager.BlockNode(new Vector2Int(row, col));
                 }
@@ -33,11 +39,4 @@ public class ObstacleManager : MonoBehaviour
         }
     }
 
-    private Vector3 CalculateWorldPosition(int row, int col)
-    {
-        float tileSize = gridManager.UnityGridSize;
-
-        Vector3 worldPos = new Vector3(row * tileSize, 0.5f, col * tileSize);
-        return worldPos;
-    }
 }
