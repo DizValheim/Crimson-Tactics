@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class UnitController : MonoBehaviour
 {
-    [SerializeField] float movementSpeed = 1f;
+    public float movementSpeed = 1f;
 
     Transform selectedUnit;
     bool unitSelected = false;
@@ -14,10 +14,13 @@ public class UnitController : MonoBehaviour
     GridManager gridManager;
     Pathfinding pathfinder;
 
+    EnemyAI[] enemies;
+
     void Start() 
     {
         gridManager = FindObjectOfType<GridManager>();
         pathfinder = FindObjectOfType<Pathfinding>();
+        enemies = FindObjectsOfType<EnemyAI>();
     }
 
     void Update() 
@@ -73,14 +76,23 @@ public class UnitController : MonoBehaviour
             Vector3 startPosition = selectedUnit.position;
             Vector3 endPosition = gridManager.GetPositionFromCoordinates(path[i].coords);
             float travelPercent = 0f;
-
+            
             selectedUnit.LookAt(endPosition);
 
             while(travelPercent < 1f)
             {
                 travelPercent += Time.deltaTime * movementSpeed;
+                // Debug.Log(travelPercent);
                 selectedUnit.position = Vector3.Lerp(startPosition, endPosition, travelPercent);
                 yield return new WaitForEndOfFrame();
+            }
+        }
+        if(enemies.Length > 0)
+        {
+            foreach (EnemyAI enemy in enemies)
+            {
+                enemy.UpdateTarget(gridManager.GetCoordinatesFromPosition(selectedUnit.position));
+                // Debug.Log($"Updated position at ");
             }
         }
     }
