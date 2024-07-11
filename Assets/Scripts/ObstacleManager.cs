@@ -9,8 +9,6 @@ public class ObstacleManager : MonoBehaviour
     [SerializeField] GameObject obstaclePrefab;
     public ObstacleData obstacleData;
 
-
-
     GridManager gridManager;
 
     private void Awake() {
@@ -24,9 +22,8 @@ public class ObstacleManager : MonoBehaviour
             for (int col = 0; col < 10; col++)
             {
 
-                if (obstacleData.blockedTiles[row, col])
+                if (obstacleData.blockedTiles.columns[col].row[row])
                 {
-                    // Debug.Log($"Obstacle instantiated at ({row}, {col})");
                     Vector3 worldPos = CalculateWorldPosition(row, col);
                     Instantiate(obstaclePrefab, worldPos, Quaternion.identity);
                 }
@@ -38,7 +35,6 @@ public class ObstacleManager : MonoBehaviour
     private Vector3 CalculateWorldPosition(int row, int col)
     {
         float tileSize = gridManager.UnityGridSize;
-        // Vector3 offset = new Vector3(tileSize / 2f, 0f, tileSize / 2f); // Center of each tile
 
         Vector3 worldPos = new Vector3(row * tileSize, 0.5f, col * tileSize);
         return worldPos;
